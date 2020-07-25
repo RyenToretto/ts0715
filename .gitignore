@@ -87,7 +87,7 @@ typings/
 Thumbs.db
 
 # IDE configurations
-.idea
+.iidea
 .vscode
 
 # build assets

@@ -1,5 +1,5 @@
 function sayHello(person: string) {
-    return "Hello,  " + person;
+    return "Hello, " + person;
 }
 
 const tsName = "typescript";
