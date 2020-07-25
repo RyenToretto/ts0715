@@ -1,0 +1,211 @@
+html, body, header, section, nav, footer,
+article, aside, canvas, details, embed,
+div, span, p, a, ul, ol, li, center,dl, dt, dd,
+fieldset, form, label, legend,
+table, caption, tr, th, td, tbody, thead, tfoot,
+h1, h2, h3, h4, h5, h6, i, b, em, strong, br, hr,
+select, label, input, textarea,
+code, pre, cite, abbr, acronym, address, big,
+applet, object, iframe, blockquote,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+figure, figcaption, output, ruby, summary,
+time, mark, audio, video {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input {
+    outline: none;
+}
+
+i {
+    font-style: normal;
+}
+
+select {
+    border: 0 none; /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+    outline: none;
+
+        /*很关键：将默认的select选择框样式清除*/
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+select::-ms-expand {
+    display: none; /* 清除ie的默认选择框样式清除，隐藏下拉箭头 */
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
+    display: block;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: none;
+}
+
+/*****************************************************************/
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.unSelectedAble { /* 内容不可以被选中 */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.my_split:before { /* 灰色顶部分割线 */
+    content: '';
+    display: block;
+    width: 100%;
+    height: 18px;
+    border-top: 1px solid rgba(7, 17, 27, 0.1);
+    border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+    background-color: #f3f5f7;
+}
+
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ellipsis >p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.line_two_point { /* 第二行出现省略号 */
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.line_3_point { /* 第3行出现省略号 */
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.unselected_able { /* 内容不可以被选中 */
+    // -webkit-user-select: none;
+    -webkit-user-select: auto;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.diy-hover-box-shadow:hover { // 鼠标悬浮，产生盒子阴影
+    box-shadow: 0 4px 12px 0 rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s linear;
+}
+
+.diy-hover-img-scale:hover { // 鼠标悬浮，图片放大
+    transition: transform  ease-in-out .5s;
+}
+
+.diy-hover-img-scale:hover img.scale-img {
+    transform: scale(1.2);
+}
+
+.diy-scroll-bar::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.diy-scroll-bar::-webkit-scrollbar-track-piece {
+    background-color: rgba(246, 246, 246, 0.2);
+    -webkit-border-radius: 6px;
+}
+
+.diy-scroll-bar::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: rgba(125, 125, 125, 0.7);
+    -webkit-border-radius: 6px;
+}
+
+.diy-scroll-bar::-webkit-scrollbar-thumb:horizontal {
+    width: 5px;
+    background-color: rgba(125, 125, 125, 0.7);
+    -webkit-border-radius: 6px;
+}
+
+/************************* 网易的 media *****************************/
+@media screen and (orientation:landscape) {    /* 横屏 */
+
+}
+
+@media screen and (orientation:portrait) {    /* 竖屏 */
+
+}
+
+@media screen and (max-width:959px) {    /* 窗口宽度<960,设计宽度=768 */
+
+}
+
+@media screen and (max-width:1024px) {
+}
+
+@media screen and (max-width:639px) { /* 窗口宽度<640, 设计宽度=480 */
+
+}
+
+@media screen and (max-width:479px) { /* 窗口宽度<480, 设计宽度=320 */
+
+}
+
+/* 打印 */
+@media print {
+
+}
+
+/********************************************************************/
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'PingFangSC-Regular', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
