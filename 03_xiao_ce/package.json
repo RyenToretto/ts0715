@@ -1,0 +1,21 @@
+{
+  "name": "03_xiao_ce",
+  "version": "1.0.0",
+  "description": "xiao_ce",
+  "keywords": [
+    "typescript"
+  ],
+  "author": "RyenToretto",
+  "license": "ISC",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:w": "tsc -w"
+  },
+  "dependencies": {
+    "tslib": "^2.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.2"
+  }
+}
