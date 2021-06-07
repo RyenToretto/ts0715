@@ -8,6 +8,7 @@
     "module": "commonjs",                           // 指定使用模块: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'
     "moduleResolution": "node",                     // 选择模块解析策略: 'node' (Node.js) or 'classic' (TypeScript pre-1.6).
     "experimentalDecorators": true,                 // 启用实验性的ES装饰器 Enables experimental support for ES7 decorators.
+    "emitDecoratorMetadata": true,                  // 启用实验性的【针对装饰器的 元数据映射】
     "forceConsistentCasingInFileNames": true,       // Disallow inconsistently-cased references to the same file.
     "allowSyntheticDefaultImports": true,           // 允许从没有设置默认导出的模块中默认导入.
     "esModuleInterop": true,                        // Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'.
@@ -67,7 +68,6 @@
     // "inlineSources": true,                       // Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set.
 
     // Experimental Options
-    // "emitDecoratorMetadata": true,               // Enables experimental support for emitting type metadata for decorators.
   },
   "include": [                                      // 需要编译的 ts 文件 *表示文件匹配 **表示忽略文件的深度问题
     "./src/**/*.ts"

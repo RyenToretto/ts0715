@@ -1,9 +1,11 @@
+import { mixinObject } from './modules/shared/helpers'
 import { User, userTest } from './modules/user'
 import { animalTest } from './modules/animal'
 import { cssDirectionTest } from './modules/css-direction'
 import { dataStructureTest } from './modules/data-structure'
-import { mixinObject } from './modules/shared/helpers'
-import {personTest} from './modules/person/test'
+import { personTest } from './modules/person'
+import { reflectMetaDataTest } from './modules/reflectMetaData'
+import { ElementOf, FunctionPropertyNames, NullableKeys } from './modules/shared/entries'
 
 const xiaoCeTest = () => {
     /**** 1. 函数约束 ****/
@@ -28,6 +30,29 @@ const xiaoCeTest = () => {
 
     /**** 6. 装饰器 ****/
     personTest()
+
+    /**** 7. 【Reflect Metadata】添加和读取元数据 ****/
+    reflectMetaDataTest()
+
+    /**** 8. 【Reflect Metadata】添加和读取元数据 ****/
+    interface Part {
+        id: number;
+        name: string[];
+        updatePart(newName: string): void;
+    }
+    type Names = FunctionPropertyNames<Part>; // 将 interface 中函数类型的名称
+
+    interface People {
+        id: string
+        name: string
+        age?: number
+        from?: string
+    }
+    type Keys = NullableKeys<People> // type Keys = "age" | "from"
+
+    /**** 9. 使用 infer ： 获取数组元素的类型 ****/
+    type ATuple = [string, number];
+    type ElementOfATuple = ElementOf<ATuple>; // string | number
 }
 
 export default {

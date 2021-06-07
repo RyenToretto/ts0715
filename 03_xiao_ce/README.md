@@ -22,12 +22,17 @@
 ```
 
 ---
-### 4. 易忘易混淆的知识点：下面两点仅仅名字相似而已
+### 4. 易忘易混淆的知识点：
 - 属性或参数中使用 <?:> 表示该属性或参数为可选项
 - 属性或参数中使用 <!:> 表示强制解析（告诉typescript编译器，这里一定有值）
 - 遍历后面使用 <!:> 表示类型推断排除 null、undefined
 
-### 4. 易忘易混淆的知识点：下面两点仅仅名字相似而已
+- 条件类型
+    - 若 T 能够赋值给 U，那么类型是 X，否则为 Y
+    ```
+        T extends U ? X : Y
+    ```
+- 类型字面量 和 字面量类型 仅仅名字相似而已
 ```typescript
 // 他们之间的关系好比【雷锋】和【雷峰塔】 
 ```
@@ -168,5 +173,103 @@ type Tree<T> = {
     value: T;
     left: Tree<T>;
     right: Tree<T>;
+}
+```
+
+---
+### 6. 强大的 infer 关键字
+- 声明一个类型变量,当类型系统给足条件的时候类型就会被推断出来.
+##### 工具类型和底层库中非常常用的关键字
+
+---
+### 7. + - 关键字
+- 用于映射类型中给属性添加修饰符.
+##### -?就代表将可选属性变为必选
+```typescript
+    type Required<T> = { [P in keyof T]-?: T[P] };
+```
+##### -readonly代表将只读属性变为非只读
+
+---
+### 8. 类型递归
+- 处理深层属性,就必须用到类型递归
+```typescript
+    type DeepPartial<T> = {
+        [K in keyof T]?: T[K] extends object
+            ? DeepPartial<T[K]>
+            : T[K]
+    };
+```
+
+---
+### 9. 官方的内置工具类型 <一切类型工具的基础就是泛型>
+- ReturnType
+
+- Partial
+
+- ConstructorParameters
+
+- Pick
+
+- Exclude
+    - 从 T 中排除出可分配给 U的元素
+        ```typescript
+            type Exclude<T, U> = T extends U ? never : T;
+            type T = Exclude<1 | 2, 1 | 3> // -> 2
+        ```
+
+- Omit
+    - 作用：忽略T中的某些属性.
+    - version 3.5 正式加入.
+    - 其实 Omit = Exclude + Pick
+        ```typescript
+            type Omit<T, K> = Pick<T, Exclude<keyof T, K>>
+            type Foo = Omit<{name: string, age: number}, 'name'> // -> { age: number }
+        ```
+
+- Required<T>
+    - 它的作用是将传入的属性变为必选项
+        ```typescript
+            type Required<T> = { [P in keyof T]-?: T[P] };
+        ```
+
+---
+### 10. 巧用 ts
+
+##### 巧用元组
+- 需要批量的来获取参数，并且每一个参数的类型还不一样，我们可以声明一个元组如：
+```typescript
+function query(...args:[string, number, boolean]){
+    const d: string = args[0];
+    const n: number = args[1];
+    const b: boolean = args[2];
+}
+```
+
+##### 巧用 Omit
+- 需要复用一个类型，但是又不需要此类型内的全部属性
+- 因此需要剔除某些属性，这个时候 Omit 就派上用场了：
+```typescript
+interface User {
+    username: string
+    id: number
+    token: string
+    avatar: string
+    role: string
+}
+type UserWithoutToken = Omit<User, 'token'>
+```
+
+##### 巧用 Record
+- Record 允许从 Union 类型中创建新类型，Union 类型中的值用作新类型的属性。
+- 比如我们要实现一个简单的汽车品牌年龄表：
+```typescript
+type Car = 'Audi' | 'BMW' | 'MercedesBenz' // Union 类型
+type CarList = Record<Car, { age: number }>
+
+const cars: CarList = {
+    Audi: { age: 119 },
+    BMW: { age: 113 },
+    MercedesBenz: { age: 133 },
 }
 ```

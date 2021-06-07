@@ -10,5 +10,6 @@ var personTest = function () {
         return 'edit';
     };
     console.log(personW.say());
+    personW.greet('hello,', 'Sari');
 };
 exports.personTest = personTest;

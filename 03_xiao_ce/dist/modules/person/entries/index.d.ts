@@ -4,4 +4,5 @@ export declare class Person {
     constructor(name: string);
     say(): string;
     static run(): string;
+    greet(message: string, name: string): string;
 }

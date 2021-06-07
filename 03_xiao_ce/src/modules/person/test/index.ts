@@ -38,13 +38,18 @@
 import { Person } from '../entries'
 
 export const personTest = () => {
+    // 【class 装饰器】
     // new 一个对象的时候，会调用 装饰器 函数，然后执行
     let personK = new Person('kjf');
     console.log(personK.age); // 18
 
+    // 【属性装饰器】
     const personW = new Person('wy');
     personW.say = function() { // 修改实例方法say
         return 'edit'
     }
     console.log(personW.say()); // 打印结果,检查是否成功修改实例方法
+
+    // 【参数装饰器】修饰参数的装饰器
+    personW.greet('hello,', 'Sari')
 }

@@ -1,4 +1,4 @@
-import { addAge, cannotWrite } from './decorator'
+import { addAge, cannotWrite, logParameter } from './decorator'
 
 @addAge
 export class Person {
@@ -16,6 +16,10 @@ export class Person {
     @cannotWrite
     static run(){
         return 'static method';
+    }
+
+    greet(@logParameter message: string, @logParameter name: string): string {
+        return `${this.name}: ${message} ${name}`
     }
 }
 

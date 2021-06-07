@@ -10,3 +10,8 @@ export function cannotWrite(target: any, propertyKey: string, descriptor: Proper
     console.log("desc " + JSON.stringify(descriptor) + "\n\n");
     descriptor.writable = false;
 }
+
+// 参数装饰器 --->修饰参数
+export function logParameter(target: any, propertyKey: string, index: number) {
+    console.log('--- logParameter --->', target, propertyKey, index);
+}
